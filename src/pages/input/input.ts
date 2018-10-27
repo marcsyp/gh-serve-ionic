@@ -21,6 +21,12 @@ export class InputPage {
 // Our local settings object
 options: any;
 
+//Defaul slider values
+private radiusXVal = 105;
+private radiusYVal = 155;
+private heightVal = 475;
+private twistVal = 45;
+
 settingsReady = false;
 
 form: FormGroup;
@@ -43,11 +49,18 @@ constructor(public navCtrl: NavController,
 
 _buildForm() {
   let group: any = {
+    //testOption: [this.options.testOption],
+    radiusXVal: [this.options.radiusXVal],
+    radiusYVal: [this.options.radiusYVal],
+    heightVal: [this.options.heightVal],
+    twistVal: [this.options.twistVal],
     option1: [this.options.option1],
     option2: [this.options.option2],
     option3: [this.options.option3],
     option4: [this.options.option3]
   };
+
+
 
   switch (this.page) {
     case 'main':
@@ -83,18 +96,22 @@ ionViewWillEnter() {
     this.settingsReady = true;
     this.options = this.settings.allSettings;
 
-    //Default values1
-    this.options.option1 = 150;
-    this.options.option2 = 125;
-    this.options.option3 = 450;
-    this.options.option4 = 45;
-
     this._buildForm();
   });
 }
 
+/*
+get testOption(): number {
+  return this.form.value['testOption'];
+}
+*/
+
 ngOnChanges() {
   console.log('Ng All Changes');
+}
+
+onSubmit(value: any) {
+  console.log("Submission: " + this.options.radiusXVal + " / " + this.options.radiusYVal + " / " + this.options.heightVal + " / " + this.options.twistVal)
 }
 
 }
