@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as THREE from 'three';
 
 import { Settings } from '../../providers';
 
@@ -17,6 +18,15 @@ import { Settings } from '../../providers';
   templateUrl: 'input.html',
 })
 export class InputPage {
+@ViewChild('domObj') canvasEl: ElementRef;
+
+private _ELEMENT : any;
+private _SCENE : any;
+private _CAMERA : any;
+public renderer;
+private _GEOMETRY;
+public _MATERIAL;
+public _CUBE;
 
 // Our local settings object
 options: any;
@@ -83,6 +93,38 @@ _buildForm() {
 ionViewDidLoad() {
   // Build an empty form for the template to render
   this.form = this.formBuilder.group({});
+
+  this.initialiseWebGLObjectAndEnvironment();
+  this.renderAnimation();
+}
+
+initialiseWebGLObjectAndEnvironment() : void {
+  this._ELEMENT = this.canvasEl.nativeElement;
+  this._SCENE = new THREE.Scene();
+  this._CAMERA = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100)
+  this.renderer = new THREE.WebGLRenderer();
+  this.renderer.setSize(window.innerWidth, window.innerHeight);
+  this._ELEMENT.appendChild( this.renderer.domElement);
+  this._GEOMETRY = new THREE.BoxGeometry(1,1,1);
+  this._MATERIAL = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true})
+  this._CUBE = new THREE.Mesh(this._GEOMETRY, this._MATERIAL);
+  this._SCENE.add(this._CUBE);
+  this._CAMERA.position.z = 5;
+}
+
+private _animate () : void {
+  requestAnimationFrame(() => {
+    this._animate();
+  });
+
+  this._CUBE.rotation.x += 0.015;
+  this._CUBE.rotation.y += 0.015;
+
+  this.renderer.render(this._SCENE, this._CAMERA);
+}
+
+renderAnimation() : void {
+  this._animate();
 }
 
 ionViewWillEnter() {
