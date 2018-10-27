@@ -111,7 +111,16 @@ ngOnChanges() {
 }
 
 onSubmit(value: any) {
-  console.log("Submission: " + this.options.radiusXVal + " / " + this.options.radiusYVal + " / " + this.options.heightVal + " / " + this.options.twistVal)
+  var data = {
+    algo:null, 
+    input:{
+      radiusX: this.options.radiusXVal, 
+      radiusY: this.options.radiusYVal, 
+      height: this.options.heightVal,
+      twist: this.options.twistVal}
+    };
+
+  console.log("Submission: " + data.input.radiusX + " / " + data.input.radiusY + " / " + data.input.height + " / " + data.input.twist)
 }
 
 }
