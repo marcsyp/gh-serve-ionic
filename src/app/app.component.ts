@@ -42,6 +42,7 @@ export class MyApp {
     { title: 'Master Detail', component: 'ListMasterPage' },
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
+    { title: 'Sandbox', component: 'SandboxPage' },
     { title: 'Search', component: 'SearchPage' }
   ]
 
