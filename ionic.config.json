@@ -1,0 +1,7 @@
+{
+  "name": "gh-serve-super",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
