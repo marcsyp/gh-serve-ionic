@@ -18,23 +18,35 @@
     <form [formGroup]="form" *ngIf="settingsReady">
         <ion-list *ngIf="page == 'main'">
           <ion-item>
-            <ion-label>Radius X</ion-label>
-            <ion-toggle formControlName="option1"></ion-toggle>
+            <ion-label left>Radius X (ft)</ion-label>
+            <ion-range [(ngModel)]="inputSlider" formControlName="option1" min="100" max="200">
+              <ion-label range-left>100</ion-label>
+              <ion-label range-right>200</ion-label>
+            </ion-range>
           </ion-item>
     
           <ion-item>
-            <ion-label>Radius Y</ion-label>
-            <ion-input formControlName="option2"></ion-input>
+            <ion-label>Radius Y (ft)</ion-label>
+            <ion-range [(ngModel)]="inputSlider" formControlName="option2" min="100" max="200">
+                <ion-label range-left>100</ion-label>
+                <ion-label range-right>200</ion-label>
+              </ion-range>
           </ion-item>
 
           <ion-item>
-              <ion-label>Height</ion-label>
-              <ion-input formControlName="option3"></ion-input>
+              <ion-label>Height (ft)</ion-label>
+              <ion-range [(ngModel)]="inputSlider" formControlName="option3" min="250" max="750">
+                  <ion-label range-left>250</ion-label>
+                  <ion-label range-right>750</ion-label>
+                </ion-range>
             </ion-item>
 
             <ion-item>
-                <ion-label>Height</ion-label>
-                <ion-input formControlName="option3"></ion-input>
+                <ion-label>Twist (deg)</ion-label>
+                <ion-range [(ngModel)]="inputSlider" formControlName="option4" min="0" max="360">
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>360</ion-label>
+                  </ion-range>
             </ion-item>
     
             <!--

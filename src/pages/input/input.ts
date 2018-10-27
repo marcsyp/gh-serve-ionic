@@ -41,7 +41,6 @@ constructor(public navCtrl: NavController,
   public settings: Settings,) {
 }
 
-
 _buildForm() {
   let group: any = {
     option1: [this.options.option1],
@@ -83,6 +82,12 @@ ionViewWillEnter() {
   this.settings.load().then(() => {
     this.settingsReady = true;
     this.options = this.settings.allSettings;
+
+    //Default values1
+    this.options.option1 = 150;
+    this.options.option2 = 125;
+    this.options.option3 = 450;
+    this.options.option4 = 45;
 
     this._buildForm();
   });
