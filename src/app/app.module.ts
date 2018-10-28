@@ -13,9 +13,9 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 
-import { File } from '@ionic-native/file';
-import { FileOpener } from '@ionic-native/file-opener';
-import { FileChooser } from '@ionic-native/file-chooser';
+// import { File } from '@ionic-native/file';
+// import { FileOpener } from '@ionic-native/file-opener';
+// import { FileChooser } from '@ionic-native/file-chooser';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -60,9 +60,6 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
-    FileOpener,
-    File,
-    FileChooser,
     Api,
     Items,
     User,

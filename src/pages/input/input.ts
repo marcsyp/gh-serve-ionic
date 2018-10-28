@@ -5,9 +5,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import * as THREE from 'three';
 //import * as RH from '../../assets/lib/rhino3dm.js'
 
-import { FileOpener } from '@ionic-native/file-opener';
+//import { FileOpener } from '@ionic-native/file-opener';
 
-import { File } from '@ionic-native/file';
+//import { File } from '@ionic-native/file';
 
 import { Settings } from '../../providers';
 import { Api } from '../../providers/api/api';
@@ -79,8 +79,8 @@ export class InputPage {
     public settings: Settings, 
     public api: Api,
     public http: HttpClient,
-    public fileOpener: FileOpener,
-    public file: File
+    //public fileOpener: FileOpener,
+    //public file: File
     ) {
   }
 
@@ -136,7 +136,7 @@ export class InputPage {
     this._SCENE = new THREE.Scene();
     this._CAMERA = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100)
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(window.innerWidth / 2, window.innerHeight);
     this._ELEMENT.appendChild(this.renderer.domElement);
     this._GEOMETRY = new THREE.BoxGeometry(1, 1, 1);
     this._MATERIAL = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true })
@@ -194,12 +194,14 @@ export class InputPage {
     // });
   }
 
+  /*
   openFile() {
     console.log('openFile');
     this.fileOpener.open(null, 'application/pdf')
       .then(() => console.log('File is opened'))
       .catch(e => console.log('Error opening file', e));
   }
+  */
 
   onSubmit(value: any) {
     // pi
@@ -253,7 +255,49 @@ export class InputPage {
 
       this.api.post('grasshopper', requestBody).subscribe(result=>{
         console.log(result);
+          //console.log(result);
+          
+          var meshRecords = result.items.filter((item)=>{return item.type=="line"});
+    
+          //console.log(meshRecords);
+    
+          var meshData = meshRecords.map((mRecord)=> {return JSON.parse(mRecord.data)});
+    
+          //console.log(meshData);
+          //var meshes = meshData.map(r=>Module.CommonObject.decode(r));
+          //meshData[0].archive3dm = 60;
+          //console.log(meshData);
+    
+          //let aa = Module.CommonObject.decode(meshData[0]);
+          //console.log(aa);
+          
+    
+          for (var i = 0; i < meshData.length; i++ ) {
+            var material = new THREE.LineBasicMaterial({
+              color: 0xffffff
+            });
+
+            console.log(meshData[i]);
+    
+            var start = meshData[i].From;
+            var end = meshData[i].To;
+           
+            //console.log(start);
+            //console.log(start.X);
+            
+            var geometry = new THREE.Geometry();
+            geometry.vertices.push(
+              new THREE.Vector3( start.X, start.Y, start.Z),
+              new THREE.Vector3( end.X, end.Y, end.Z )
+            );
+            
+            var line = new THREE.Line( geometry, material );
+            this._SCENE.add( line );
+          }
+    
       });
+
+      
     });
     
     // var thing = this.api.get('version').subscribe(response => {
