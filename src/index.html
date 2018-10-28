@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
@@ -17,8 +18,7 @@
 
   <!-- cordova.js required for cordova apps (remove if not needed) -->
   <script src="cordova.js"></script>
-  <!-- <script src="https://files.mcneel.com/rhino3dm/js/latest/rhino3dm.js"></script>
-  <script src="https://files.mcneel.com/rhino3dm/js/latest/compute.rhino3d.js"></script> -->
+
 
   <!-- un-comment this code to enable service worker
   <script>
@@ -31,12 +31,15 @@
 
   <link href="build/main.css" rel="stylesheet">
 
-
 </head>
+
 <body>
 
   <!-- Ionic's root component and where the app will load -->
   <ion-app></ion-app>
+
+  <script async type="text/javascript" src="https://files.mcneel.com/rhino3dm/js/latest/rhino3dm.js"></script>
+  <script type="text/javascript" src="https://files.mcneel.com/rhino3dm/js/latest/compute-rhino3dm.js"></script>
 
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>
@@ -49,4 +52,5 @@
   <script src="build/main.js"></script>
 
 </body>
+
 </html>
