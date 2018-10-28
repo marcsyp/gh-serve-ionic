@@ -15,42 +15,47 @@
 
 <ion-content padding>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" *ngIf="settingsReady">
-        <ion-list *ngIf="page == 'main'">
-          <ion-item>
-            <ion-label left>Radius X (ft)</ion-label>
-            <ion-range [(ngModel)]="radiusXVal" formControlName="radiusXVal" min="100" max="200">
-              <ion-label range-left>100</ion-label>
-              <ion-label range-right>200</ion-label>
-            </ion-range>
-          </ion-item>
-    
-          <ion-item>
-            <ion-label>Radius Y (ft)</ion-label>
-            <ion-range [(ngModel)]="radiusYVal" formControlName="radiusYVal" min="100" max="200">
-                <ion-label range-left>100</ion-label>
-                <ion-label range-right>200</ion-label>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" *ngIf="settingsReady">
+          <ion-list *ngIf="page == 'main'">
+            <ion-item>
+              <ion-label></ion-label>
+              <ion-range [(ngModel)]="radiusXVal" (ionChange)="onChange(form.value)" formControlName="radiusXVal" min="100"
+                max="200">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
               </ion-range>
-          </ion-item>
-
-          <ion-item>
-              <ion-label>Height (ft)</ion-label>
-              <ion-range [(ngModel)]="heightVal" formControlName="heightVal" min="250" max="750">
-                  <ion-label range-left>250</ion-label>
-                  <ion-label range-right>750</ion-label>
-                </ion-range>
             </ion-item>
 
             <ion-item>
-                <ion-label>Twist (deg)</ion-label>
-                <ion-range [(ngModel)]="twistVal" formControlName="twistVal" min="0" max="360">
-                    <ion-label range-left>0</ion-label>
-                    <ion-label range-right>360</ion-label>
-                  </ion-range>
+              <ion-label>Radius Y (ft)</ion-label>
+              <ion-range [(ngModel)]="radiusYVal" (ionChange)="onChange(form.value)" formControlName="radiusYVal" min="100"
+                max="200">
+                <ion-label range-left>100</ion-label>
+                <ion-label range-right>200</ion-label>
+              </ion-range>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Height (ft)</ion-label>
+              <ion-range [(ngModel)]="slider3" formControlName="heightVal" min="250" max="750">
+                <ion-label range-left>250</ion-label>
+                <ion-label range-right>750</ion-label>
+              </ion-range>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Twist (deg)</ion-label>
+              <ion-range [(ngModel)]="twistVal" formControlName="twistVal" min="0" max="360">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>360</ion-label>
+              </ion-range>
             </ion-item>
             <br>
             <button ion-button type="submit" block>Submit</button>
-    
+
             <!--
           <ion-item>
             <ion-label>Height</ion-label>
@@ -62,10 +67,19 @@
           </ion-item>
           -->
           </ion-list>
-      </form>
-
-      <ion-content padding>
-        <div #domObj></div>
-      </ion-content>
+        </form>
+      </ion-col>
+      <ion-col>
+        <ion-content padding>
+          <div #domObj></div>
+        </ion-content>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item>
+    <ion-label color="primary" stacked>GH XML</ion-label>
+    <ion-input type="text" placeholder="Paste here"></ion-input>
+  </ion-item>
+  <br>
 
 </ion-content>

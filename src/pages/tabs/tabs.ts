@@ -17,8 +17,8 @@ export class TabsPage {
 
   tab1Title = " ";
   tab2Title = " ";
-  tab3Title = "Settings";
-  tab4Title = "Settings";
+  tab3Title = "";
+  tab4Title = "";
 
   constructor(public navCtrl: NavController, public translateService: TranslateService) {
     /*
@@ -30,7 +30,7 @@ export class TabsPage {
     });
     */
 
-   this.tab1Title = "Thing1";
+   this.tab1Title = "GH at Rest";
    this.tab2Title = "Thing2";
   this.tab3Title = "Sandbox";
    this.tab4Title = "INPUT";
