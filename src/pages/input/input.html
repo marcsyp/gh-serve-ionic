@@ -1,0 +1,71 @@
+<!--
+  Generated template for the InputPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>input</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" *ngIf="settingsReady">
+        <ion-list *ngIf="page == 'main'">
+          <ion-item>
+            <ion-label left>Radius X (ft)</ion-label>
+            <ion-range [(ngModel)]="radiusXVal" formControlName="radiusXVal" min="100" max="200">
+              <ion-label range-left>100</ion-label>
+              <ion-label range-right>200</ion-label>
+            </ion-range>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label>Radius Y (ft)</ion-label>
+            <ion-range [(ngModel)]="radiusYVal" formControlName="radiusYVal" min="100" max="200">
+                <ion-label range-left>100</ion-label>
+                <ion-label range-right>200</ion-label>
+              </ion-range>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>Height (ft)</ion-label>
+              <ion-range [(ngModel)]="heightVal" formControlName="heightVal" min="250" max="750">
+                  <ion-label range-left>250</ion-label>
+                  <ion-label range-right>750</ion-label>
+                </ion-range>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Twist (deg)</ion-label>
+                <ion-range [(ngModel)]="twistVal" formControlName="twistVal" min="0" max="360">
+                    <ion-label range-left>0</ion-label>
+                    <ion-label range-right>360</ion-label>
+                  </ion-range>
+            </ion-item>
+            <br>
+            <button ion-button type="submit" block>Submit</button>
+    
+            <!--
+          <ion-item>
+            <ion-label>Height</ion-label>
+            <ion-select formControlName="option4">
+              <ion-option value="1" checked="true">1</ion-option>
+              <ion-option value="2">2</ion-option>
+              <ion-option value="3">3</ion-option>
+            </ion-select>
+          </ion-item>
+          -->
+          </ion-list>
+      </form>
+
+      <ion-content padding>
+        <div #domObj></div>
+      </ion-content>
+
+</ion-content>
