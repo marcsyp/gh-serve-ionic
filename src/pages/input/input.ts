@@ -5,6 +5,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import * as THREE from 'three';
 //import * as RH from '../../assets/lib/rhino3dm.js'
 
+import { FileOpener } from '@ionic-native/file-opener';
+
+import { File } from '@ionic-native/file';
+
 import { Settings } from '../../providers';
 import { Api } from '../../providers/api/api';
 
@@ -74,7 +78,10 @@ export class InputPage {
     public navParams: NavParams,
     public settings: Settings, 
     public api: Api,
-    public http: HttpClient) {
+    public http: HttpClient,
+    public fileOpener: FileOpener,
+    public file: File
+    ) {
   }
 
   _buildForm() {
@@ -185,6 +192,13 @@ export class InputPage {
     // this.api.post('grasshopper', requestBody).subscribe(result => {
     //   console.log(result);
     // });
+  }
+
+  openFile() {
+    console.log('openFile');
+    this.fileOpener.open(null, 'application/pdf')
+      .then(() => console.log('File is opened'))
+      .catch(e => console.log('Error opening file', e));
   }
 
   onSubmit(value: any) {
