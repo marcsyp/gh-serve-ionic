@@ -13,7 +13,7 @@ import { Settings } from '../../providers';
 import { Api } from '../../providers/api/api';
 
 // tslint:disable-next-line
-var rhino3dm = Module;
+//var rhino3dm = Module;
 
 /**
  * Generated class for the InputPage page.
