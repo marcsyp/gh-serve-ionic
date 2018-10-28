@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import * as THREE from 'three';
+
+var OrbitControls = require('three-orbit-controls')(THREE)
 //import * as RH from '../../assets/lib/rhino3dm.js'
 
 //import { FileOpener } from '@ionic-native/file-opener';
@@ -40,6 +42,7 @@ export class InputPage {
   private _GEOMETRY;
   public _MATERIAL;
   public _CUBE;
+  public _CONTROLS;
 
   // Our local settings object
   options: any;
@@ -135,24 +138,40 @@ export class InputPage {
     this._ELEMENT = this.canvasEl.nativeElement;
     this._SCENE = new THREE.Scene();
     this._CAMERA = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100)
+    this._CAMERA.position.x = 20;
+    this._CAMERA.position.y = 0;
+    this._CAMERA.position.z = 20;
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth / 2, window.innerHeight);
     this._ELEMENT.appendChild(this.renderer.domElement);
     this._GEOMETRY = new THREE.BoxGeometry(1, 1, 1);
     this._MATERIAL = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true })
     this._CUBE = new THREE.Mesh(this._GEOMETRY, this._MATERIAL);
-    this._SCENE.add(this._CUBE);
+    //this._SCENE.add(this._CUBE);
     this._CAMERA.position.z = 5;
+    // orbit controls help with mouse/trackpad interaction
+    this._CONTROLS = new OrbitControls( this._CAMERA, this.renderer.domElement );
+    this._CONTROLS.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+    this._CONTROLS.dampingFactor = 0.25;
+    this._CONTROLS.screenSpacePanning = false;
+    this._CONTROLS.minDistance = 10;
+    this._CONTROLS.maxDistance = 500;
+
+
   }
 
   private _animate(): void {
     requestAnimationFrame(() => {
       this._animate();
     });
+/*
+  requestAnimationFrame( animate );
+  this._CONTROLS.update();
 
+*/
     this._CUBE.rotation.x += 0.015;
     this._CUBE.rotation.y += 0.015;
-
+    this._CONTROLS.update();
     this.renderer.render(this._SCENE, this._CAMERA);
   }
 
