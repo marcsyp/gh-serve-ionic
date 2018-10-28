@@ -32,19 +32,24 @@ export class TutorialPage {
         console.log('Loaded values', values);
         this.slides = [
           {
-            title: values.TUTORIAL_SLIDE1_TITLE,
-            description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-1.png',
+            title: "Introducing: RESThopper",
+            description: "Calculated Grasshopper definitions in the cloud using our new RESTful service!",
+            image: 'assets/img/restHopper1.jpg',
           },
           {
-            title: values.TUTORIAL_SLIDE2_TITLE,
-            description: values.TUTORIAL_SLIDE2_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-2.png',
+            title: "The Front-End of Your Choice",
+            description: "We support any platform that can do a REST call.",
+            image: 'assets/img/restHopper2.jpg',
           },
           {
-            title: values.TUTORIAL_SLIDE3_TITLE,
-            description: values.TUTORIAL_SLIDE3_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-3.png',
+            title: "REST Call Schema",
+            description: "Using a simple POST request with this schema in the body will return a JSON with Rhino geometry from the Rhino Compute environment.  This can be translated to front end visualizations using Rhino3dm for more complex types.",
+            image: 'assets/img/restHopper3.jpg',
+          },
+          {
+            title: "Big Implications",
+            description: "There are many potential use cases unlocked by this type of platform. Most significantly, it enables the potential for a cloud-based marketplace for Grasshopper algorithms",
+            image: 'assets/img/restHopper4.jpg',
           }
         ];
       });
