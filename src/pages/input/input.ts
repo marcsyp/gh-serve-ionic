@@ -296,7 +296,7 @@ export class InputPage {
               color: 0xffffff
             });
 
-            console.log(meshData[i]);
+            //console.log(meshData[i]);
     
             var start = meshData[i].From;
             var end = meshData[i].To;
