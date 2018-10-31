@@ -289,7 +289,7 @@ export class InputPage {
     
           //let aa = Module.CommonObject.decode(meshData[0]);
           //console.log(aa);
-          
+          this._SCENE.children = [];
     
           for (var i = 0; i < meshData.length; i++ ) {
             var material = new THREE.LineBasicMaterial({
