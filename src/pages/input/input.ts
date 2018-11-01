@@ -271,10 +271,10 @@ export class InputPage {
         requestBody.values[this.options.slider6name] = this.options.slider6
       }
 
-      console.log('requestBody', requestBody);
+      //console.log('requestBody', requestBody);
 
       this.api.post('grasshopper', requestBody).subscribe(result=>{
-        console.log(result);
+        //console.log(result);
           //console.log(result);
           
           var meshRecords = result.items.filter((item)=>{return item.type=="line"});
