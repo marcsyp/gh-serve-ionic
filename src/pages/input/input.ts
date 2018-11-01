@@ -137,6 +137,7 @@ export class InputPage {
   initialiseWebGLObjectAndEnvironment(): void {
     this._ELEMENT = this.canvasEl.nativeElement;
     this._SCENE = new THREE.Scene();
+    this._SCENE.background = new THREE.Color( 0xefefef );
     this._CAMERA = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100)
     this._CAMERA.position.x = 20;
     this._CAMERA.position.y = 0;
@@ -293,7 +294,7 @@ export class InputPage {
     
           for (var i = 0; i < meshData.length; i++ ) {
             var material = new THREE.LineBasicMaterial({
-              color: 0xffffff
+              color: 0x000000
             });
 
             //console.log(meshData[i]);
