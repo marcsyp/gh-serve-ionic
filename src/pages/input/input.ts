@@ -1,9 +1,11 @@
+import { Items } from './../../providers/items/items';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import * as THREE from 'three';
 
+declare function require(name:string);
 var OrbitControls = require('three-orbit-controls')(THREE)
 //import * as RH from '../../assets/lib/rhino3dm.js'
 
@@ -13,6 +15,7 @@ var OrbitControls = require('three-orbit-controls')(THREE)
 
 import { Settings } from '../../providers';
 import { Api } from '../../providers/api/api';
+import { resolve } from 'url';
 
 // tslint:disable-next-line
 //var rhino3dm = Module;
@@ -276,8 +279,11 @@ export class InputPage {
       this.api.post('grasshopper', requestBody).subscribe(result=>{
         //console.log(result);
           //console.log(result);
-          
-          var meshRecords = result.items.filter((item)=>{return item.type=="line"});
+          var x = new Uint8Array(result);
+
+          var data = JSON.parse(x.toString());
+
+          var meshRecords = data.items.filter((item)=>{return item.type=="line"});
     
           //console.log(meshRecords);
     
