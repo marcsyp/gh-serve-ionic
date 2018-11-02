@@ -15,42 +15,61 @@
 
 <ion-content padding>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" *ngIf="settingsReady">
-        <ion-list *ngIf="page == 'main'">
-          <ion-item>
-            <ion-label left>Radius X (ft)</ion-label>
-            <ion-range [(ngModel)]="radiusXVal" formControlName="radiusXVal" min="100" max="200">
-              <ion-label range-left>100</ion-label>
-              <ion-label range-right>200</ion-label>
-            </ion-range>
-          </ion-item>
-    
-          <ion-item>
-            <ion-label>Radius Y (ft)</ion-label>
-            <ion-range [(ngModel)]="radiusYVal" formControlName="radiusYVal" min="100" max="200">
-                <ion-label range-left>100</ion-label>
-                <ion-label range-right>200</ion-label>
-              </ion-range>
-          </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" *ngIf="settingsReady">
+          <ion-list *ngIf="page == 'main'">
+            <ion-item>
 
-          <ion-item>
-              <ion-label>Height (ft)</ion-label>
-              <ion-range [(ngModel)]="heightVal" formControlName="heightVal" min="250" max="750">
-                  <ion-label range-left>250</ion-label>
-                  <ion-label range-right>750</ion-label>
-                </ion-range>
+              <ion-input [(ngModel)]="slider1name" input-type="text" placeholder="Variable name" formControlName="slider1name"></ion-input>
+              <ion-range [(ngModel)]="slider1" (ionChange)="onChange(form.value)" formControlName="slider1" min="0" max="100">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+              </ion-range>
             </ion-item>
 
             <ion-item>
-                <ion-label>Twist (deg)</ion-label>
-                <ion-range [(ngModel)]="twistVal" formControlName="twistVal" min="0" max="360">
-                    <ion-label range-left>0</ion-label>
-                    <ion-label range-right>360</ion-label>
-                  </ion-range>
+
+              <ion-input [(ngModel)]="slider2name" input-type="text" placeholder="Variable name" formControlName="slider2name"></ion-input>
+              <ion-range [(ngModel)]="slider2" (ionChange)="onChange(form.value)" formControlName="slider2" min="0" max="100">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+              </ion-range>
             </ion-item>
+            <ion-item>
+
+              <ion-input [(ngModel)]="slider3name" input-type="text" placeholder="Variable name" formControlName="slider3name"></ion-input>
+              <ion-range [(ngModel)]="slider3" (ionChange)="onChange(form.value)" formControlName="slider3" min="0" max="100">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+              </ion-range>
+            </ion-item>
+            <ion-item>
+
+              <ion-input [(ngModel)]="slider4name" input-type="text" placeholder="Variable name" formControlName="slider4name"></ion-input>
+              <ion-range [(ngModel)]="slider4" (ionChange)="onChange(form.value)" formControlName="slider4" min="0" max="100">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+              </ion-range>
+            </ion-item>
+            <ion-item>
+
+
+            </ion-item>
+            <ion-item>
+
+              <ion-input [(ngModel)]="slider6name" input-type="text" placeholder="Variable name" formControlName="slider6name"></ion-input>
+              <ion-range [(ngModel)]="slider6" (ionChange)="onChange(form.value)" formControlName="slider6" min="0" max="100">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+              </ion-range>
+            </ion-item>
+
+
             <br>
             <button ion-button type="submit" block>Submit</button>
-    
+
             <!--
           <ion-item>
             <ion-label>Height</ion-label>
@@ -62,10 +81,22 @@
           </ion-item>
           -->
           </ion-list>
-      </form>
-
-      <ion-content padding>
-        <div #domObj></div>
-      </ion-content>
+        </form>
+      </ion-col>
+      <ion-col>
+        <ion-content padding>
+          <div #domObj></div>
+        </ion-content>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item>
+    <ion-label color="primary" stacked>GH XML</ion-label>
+    <ion-input [(ngModel)]="ghXml" type="text" placeholder="Paste here"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button type="button">Load GHX File</button>
+  </ion-item>
+  <br>
 
 </ion-content>

@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://21d453c0.ngrok.io';
+  //url: string = 'http://10b16115.ngrok.io';
+  url: string = 'http://localhost:8888';
 
   constructor(public http: HttpClient) {
   }
@@ -19,6 +20,7 @@ export class Api {
     }
 
     // Support easy query params for GET requests
+    
     if (params) {
       reqOpts.params = new HttpParams();
       for (let k in params) {
